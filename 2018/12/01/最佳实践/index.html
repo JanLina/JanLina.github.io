@@ -13,11 +13,11 @@
 
     <title>
         
-          Example Post - JanLina的博客 | JanLina&#39;s Blog
+          最佳实践 - JanLina的博客 | JanLina&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://janlina.github.io/2014/09/22/js-version/">
+    <link rel="canonical" href="https://janlina.github.io/2018/12/01/最佳实践/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -67,7 +67,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">阿狸</a>
+            <a class="navbar-brand" href="/">木子狸</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -90,14 +90,14 @@
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -155,7 +155,7 @@
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('post-bg-js-version.jpg')
+        background-image: url('header.jpg')
     }
 </style>
 <header class="intro-header">
@@ -169,14 +169,12 @@
                         
                           <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
-                          <a class="tag" href="/tags/#翻译" title="翻译">翻译</a>
-                        
                     </div>
-                    <h1>Example Post</h1>
+                    <h1>最佳实践</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
-                        Posted by Hux on
-                        2014-09-22
+                        Posted by JanLina on
+                        2018-12-01
                     </span>
                 </div>
             </div>
@@ -195,43 +193,158 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>JavaScript 有着很奇怪的命名史。</p>
-<p>1995 年，它作为网景浏览器（Netscape Navigator）的一部分首次发布，网景给这个新语言命名为 LiveScript。一年后，为了搭上当时媒体热炒 Java 的顺风车，临时改名为了 JavaScript <em>（当然，Java 和 JavaScript 的关系，就和雷锋和雷锋塔一样 —— 并没有什么关系）</em></p>
-<p><img src="javascript-java.jpg" alt="java-javascript"><br><small class="img-hint">歪果仁的笑话怎么一点都不好笑</small></p>
+                <h1 id="24-最佳实践"><a href="#24-最佳实践" class="headerlink" title="24 最佳实践"></a>24 最佳实践</h1><h3 id="可维护性"><a href="#可维护性" class="headerlink" title="可维护性"></a>可维护性</h3><h5 id="WHAT"><a href="#WHAT" class="headerlink" title="WHAT"></a>WHAT</h5><ul>
+<li>可理解性</li>
+<li>直观性</li>
+<li>可适应性 - 数据变化，不要求重写代码</li>
+<li>可扩展性 - 在代码架构上已考虑到在未来允许对核心功能进行扩展</li>
+<li>可调试性</li>
+</ul>
+<h5 id="代码约定"><a href="#代码约定" class="headerlink" title="代码约定"></a>代码约定</h5><p>–</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Sol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可读性</td>
+<td>缩进 / 注释（函数和方法、大段代码、复杂算法、Hack等添加注释）</td>
+</tr>
+<tr>
+<td>变量和函数命名</td>
+<td>变量名用名词 / 函数名以动词开头 / 合乎逻辑</td>
+</tr>
+<tr>
+<td>变量类型透明</td>
+<td>初始化为该类型 / 匈牙利标记法 / 指定变量类型</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p>译者注：<a href="https://en.wikipedia.org/wiki/JavaScript#History" target="_blank" rel="noopener">wikipedia 的 JavaScript 词条</a> 更详细的叙述了这段历史</p>
+<p>匈牙利标记法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">// 单个字符表示基本类型： "o"代表对象， "s"代表字符串， "i"代表整数， "f"代表浮点数， "b"代表布尔型</span></span><br><span class="line">&gt; <span class="keyword">var</span> bFound;  <span class="comment">//布尔型</span></span><br><span class="line">&gt; <span class="keyword">var</span> iCount;  <span class="comment">//整数</span></span><br><span class="line">&gt; <span class="keyword">var</span> sName;   <span class="comment">//字符串</span></span><br><span class="line">&gt; <span class="keyword">var</span> oPerson; <span class="comment">//对象</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>1996 年，网景将 JavaScript 提交给 <a href="http://www.ecma-international.org/" target="_blank" rel="noopener">ECMA International（欧洲计算机制造商协会）</a> 进行标准化，并最终确定出新的语言标准，它就是 ECMAScript。自此，ECMAScript 成为所有 JavaScript 实现的基础，不过，由于 JavaScript 名字的历史原因和市场原因（很显然 ECMAScript 这个名字并不令人喜欢……），现实中我们只用 ECMAScript 称呼标准，平时都还是使用 JavaScript 来称呼这个语言。</p>
 <blockquote>
-<p>术语（译者注）：</p>
+<p>指定变量类型<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">// 将类型注释放在变量名后面</span></span><br><span class="line">&gt; <span class="keyword">var</span> found <span class="comment">/*:Boolean*/</span> = <span class="literal">false</span>;</span><br><span class="line">&gt; <span class="keyword">var</span> count <span class="comment">/*:int*/</span> = <span class="number">10</span>;</span><br><span class="line">&gt; <span class="keyword">var</span> name <span class="comment">/*:String*/</span> = <span class="string">"Nicholas"</span>;</span><br><span class="line">&gt; <span class="keyword">var</span> person <span class="comment">/*:Object*/</span> = <span class="literal">null</span>;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="松散耦合"><a href="#松散耦合" class="headerlink" title="松散耦合"></a>松散耦合</h5><p>–</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Sol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>解耦 HTML/JS</td>
+<td></td>
+</tr>
+<tr>
+<td>解耦 CSS/JS</td>
+<td>JS中通过修改类名修改CSS / 不在CSS中使用JS表达式</td>
+</tr>
+<tr>
+<td>解耦应用逻辑/事件处理程序</td>
+<td>handler从event中提取信息，并传入处理应用逻辑的方法中</td>
+</tr>
+</tbody>
+</table>
+<p>应用逻辑 / 事件处理程序松散耦合的原则：</p>
 <ul>
-<li><em>标准（Standard）</em>： 用于定义与其他事物区别的一套规则</li>
-<li><em>实现（Implementation）</em>： 某个标准的具体实施/真实实践</li>
+<li>不将 event 对象直接传给其他方法；只传来自 event 中所需的数据</li>
+<li>任何可以在应用层面的动作都应该可以在不执行任何事件处理程序的情况下进行</li>
+<li>任何事件处理程序都应该处理事件，然后将处理转交给应用逻辑</li>
 </ul>
-</blockquote>
-<p>不过，JavaScript 开发者们并不怎么在乎这些，因为在诞生之后的 15 年里，ECMAScript 并没有多少变化，而且现实中的很多实现都已经和标准大相径庭。其实在第一版的 ECMAScript 发布后，很快又跟进发布了两个版本，但是自从 1999 年 ECMAScript 3 发布后，十年内都没有任何改动被成功添加到官方规范里。取而代之的，是各大浏览器厂商们争先进行自己的语言拓展，web 开发者们别无选择只能去尝试并且支持这些 API。即使是在 2009 年 ECMAScript 5 发布之后，仍然用了数年这些新规范才得到了浏览器的广泛支持，可是大部分开发者还是写着 ECMAScript 3 风格的代码，并不觉得有必要去了解这些规范。</p>
-<blockquote>
-<p>译者注：<a href="https://en.wikipedia.org/wiki/ECMAScript#4th_Edition_.28abandoned.29" target="_blank" rel="noopener">ECMAScript 第四版草案</a>由于太过激进而被抛弃，Adobe 的 <a href="https://en.wikipedia.org/wiki/ActionScript" target="_blank" rel="noopener">ActionScript 3.0</a> 是 ECMAScript edition 4 的唯一实现（ Flash 差点就统一 Web 了）</p>
-</blockquote>
-<p>到了 2012 年，事情突然开始有了转变。大家开始推动停止对旧版本 IE 浏览器的支持，用 ECMAScript 5 (ES5) 风格来编写代码也变得更加可行。与此同时，一个新的 ECMAScript 规范也开始启动。到了这时，大家开始逐渐习惯以对 ECMAScript 规范的版本支持程度来形容各种 JavaScript 实现。在正式被指名为 ECMAScript 第 6 版 (ES6) 之前，这个新的标准原本被称为 ES.Harmony（和谐）。2015 年，负责制定 ECMAScript 规范草案的委员会 TC39 决定将定义新标准的制度改为一年一次，这意味着每个新特性一旦被批准就可以添加，而不像以往一样，规范只有在整个草案完成，所有特性都没问题后才能被定稿。因此，ECMAScript 第 6 版在六月份公布之前，又被重命名为了 ECMAScript 2015（ES2015）</p>
-<p>目前，仍然有很多新的 JavaScript 特性或语法正在提议中，包括 <a href="https://github.com/wycats/javascript-decorators" target="_blank" rel="noopener">decorators（装饰者）</a>，<a href="https://github.com/lukehoban/ecmascript-asyncawait" target="_blank" rel="noopener">async-await（async-await 异步编程模型）</a> 和 <a href="https://github.com/jeffmo/es-class-properties" target="_blank" rel="noopener">static class properties（静态类属性）</a>。它们通常被称为 ES7，ES2016 或者 ES.Next 的特性，不过实际上它们只能被称作提案或者说可能性，毕竟 ES2016 的规范还没有完成，有可能全部都会引入，也有可能一个都没有。TC39 把一个提案分为 4 个阶段，你可以在 <a href="https://babeljs.io/docs/usage/experimental/" target="_blank" rel="noopener">Babel 的官网</a> 上查看各个提案目前都在哪个阶段了。</p>
-<p>所以，我们该如何使用这一大堆术语呢？下面的列表或许能帮助到你：</p>
+<h5 id="编程实践"><a href="#编程实践" class="headerlink" title="编程实践"></a>编程实践</h5><p>–</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Sol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>尊重对象所有权</td>
+<td>不动不是自己创建/维护的对象</td>
+</tr>
+<tr>
+<td>避免全局量</td>
+<td>命名空间</td>
+</tr>
+<tr>
+<td>避免与null进行比较</td>
+<td>改用更精确的类型检测，越少使用null，越容易确定代码的目的</td>
+</tr>
+<tr>
+<td>使用常量</td>
+<td>将数据从应用逻辑分离出来</td>
+</tr>
+</tbody>
+</table>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><h5 id="注意作用域"><a href="#注意作用域" class="headerlink" title="注意作用域"></a>注意作用域</h5><ul>
+<li>避免全局查找 - 开销大，将会用到多次的全局对象存储为局部变量</li>
+<li>避免with语句 - with会创建额外的作用域</li>
+</ul>
+<h5 id="选择正确方法"><a href="#选择正确方法" class="headerlink" title="选择正确方法"></a>选择正确方法</h5><ul>
+<li>避免不必要的属性查找 - 访问变量或数组的算法复杂度是O(1)，而访问属性是O(n)</li>
+<li>优化循环</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>优化循环</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>减值迭代</td>
+<td>往往更高效</td>
+</tr>
+<tr>
+<td>简化终止条件</td>
+<td>每次循环都要检查，所以尽可能简化</td>
+</tr>
+<tr>
+<td>简化循环体</td>
+<td>确保没有某些可以被很容易移出循环的密集计算</td>
+</tr>
+<tr>
+<td>使用后测试循环</td>
+<td>使用do-while这种后测试循环，可以避免最初终止条件的计算</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; values.length; i++)&#123;</span><br><span class="line">    process(values[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// -&gt; 减值迭代 &amp;&amp; 简化终止条件，只需要计算一次values.length</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=values.length <span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">    process(values[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// -&gt; 后测试循环</span></span><br><span class="line"><span class="keyword">var</span> i=values.length <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">if</span> (i &gt; <span class="number">-1</span>)&#123;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        process(values[i]);</span><br><span class="line">    &#125;<span class="keyword">while</span>(--i &gt;= <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><strong>ECMAScript</strong>：一个由 ECMA International 进行标准化，TC39 委员会进行监督的语言。通常用于指代标准本身。</li>
-<li><strong>JavaScript</strong>：ECMAScript 标准的各种实现的最常用称呼。这个术语并不局限于某个特定版本的 ECMAScript 规范，并且可能被用于任何不同程度的任意版本的 ECMAScript 的实现。</li>
-<li><strong>ECMAScript 5 (ES5)</strong>：ECMAScript 的第五版修订，于 2009 年完成标准化。这个规范在所有现代浏览器中都相当完全的实现了。</li>
-<li><strong>ECMAScript 6 (ES6) / ECMAScript 2015 (ES2015)</strong>：ECMAScript 的第六版修订，于 2015 年完成标准化。这个标准被部分实现于大部分现代浏览器。可以查阅<a href="http://kangax.github.io/compat-table/es6/" target="_blank" rel="noopener">这张兼容性表</a>来查看不同浏览器和工具的实现情况。</li>
-<li><strong>ECMAScript 2016</strong>：预计的第七版 ECMAScript 修订，计划于明年夏季发布。这份规范具体将包含哪些特性还没有最终确定</li>
-<li><strong>ECMAScript Proposals</strong>：被考虑加入未来版本 ECMAScript 标准的特性与语法提案，他们需要经历五个阶段：Strawman（稻草人），Proposal（提议），Draft（草案），Candidate（候选）以及 Finished （完成）。</li>
+<li><p>展开循环 - 如果循环的次数是确定的，消除循环可以消除建立循环和处理终止条件的额外开销</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">process(values[<span class="number">0</span>]);</span><br><span class="line">process(values[<span class="number">1</span>]);</span><br><span class="line">process(values[<span class="number">2</span>]);</span><br><span class="line"><span class="comment">// Duff装置（先处理8的余数，后面每次循环处理8个元素）</span></span><br><span class="line"><span class="keyword">var</span> iterations = <span class="built_in">Math</span>.floor(values.length / <span class="number">8</span>);</span><br><span class="line"><span class="keyword">var</span> leftover = values.length % <span class="number">8</span>;</span><br><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span> (leftover &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        process(values[i++]);</span><br><span class="line">    &#125; <span class="keyword">while</span> (--leftover &gt; <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    process(values[i++]);</span><br><span class="line">    process(values[i++]);</span><br><span class="line">    process(values[i++]);</span><br><span class="line">    process(values[i++]);</span><br><span class="line">    process(values[i++]);</span><br><span class="line">    process(values[i++]);</span><br><span class="line">    process(values[i++]);</span><br><span class="line">    process(values[i++]);</span><br><span class="line">&#125; <span class="keyword">while</span> (--iterations &gt; <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>避免双重解释 - 避免出现需要按照JavaScript解释的字符串</p>
+</li>
+<li>原生方法较快 / Switch语句较快 / 位运算符较快</li>
 </ul>
-<p>在这整个 Blog 中，我将把目前的 ECMAScript 版本称作 ES6（因为这是大部分开发者最习以为常的），把明年的规范称作 ES2016（因为，与 ES6/ES2015 不同，这个名字将在整个标准化过程中沿用）并且将那些还没有成为 ECMAScript 定稿或草案的未来语言概念称为 ECMAScript 提案或者 JavaScript 提案。我将尽我所能在任何可能引起困惑的场合沿用这篇文章。</p>
-<h4 id="一些资源"><a href="#一些资源" class="headerlink" title="一些资源"></a>一些资源</h4><ul>
-<li>TC39 的 <a href="https://github.com/tc39/ecma262" target="_blank" rel="noopener">Github 仓库</a>上可以看到所有目前公开的提案</li>
-<li>如果你还不熟悉 ES6，Babel 有一个<a href="https://babeljs.io/docs/learn-es2015/" target="_blank" rel="noopener">很不错的特性概览</a></li>
-<li>如果你希望深入 ES6，这里有两本很不错的书： Axel Rauschmayer 的 <a href="http://exploringjs.com/" target="_blank" rel="noopener">Exploring ES6</a>和 Nicholas Zakas 的 <a href="https://leanpub.com/understandinges6" target="_blank" rel="noopener">Understanding ECMAScript 6</a>。Axel 的博客 <a href="http://www.2ality.com/" target="_blank" rel="noopener">2ality</a> 也是很不错的 ES6 资源</li>
+<h5 id="最小化语句数"><a href="#最小化语句数" class="headerlink" title="最小化语句数"></a>最小化语句数</h5><ul>
+<li>多个变量声明用一个var语句</li>
+<li><p>插入迭代值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = values[i];</span><br><span class="line">i++;</span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="keyword">var</span> name = values[i++];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用数组和对象字面量</p>
+</li>
 </ul>
-<p><img class="shadow" width="320" src="keep-calm-and-learn-javascript.png"><br><small class="img-hint">来学 JavaScript 吧！</small></p>
-<h4 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h4><p>本文译自 <a href="http://benmccormick.org/2015/09/14/es5-es6-es2016-es-next-whats-going-on-with-javascript-versioning/" target="_blank" rel="noopener">ES5, ES6, ES2016, ES.Next: What’s going on with JavaScript versioning?</a><br>译者 <a href="http://weibo.com/huxpro" target="_blank" rel="noopener">黄玄</a>，首次发布于 <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux Blog</a>，转载请保留以上链接</p>
+<h5 id="优化DOM交互"><a href="#优化DOM交互" class="headerlink" title="优化DOM交互"></a>优化DOM交互</h5><ul>
+<li>最小化现场更新 - 使用Fragment</li>
+<li>使用innerHTML - 大的DOM更改时，比使用DOM方法快</li>
+<li>使用事件代理</li>
+<li>注意HTMLCollection - 最小化访问HTMLCollection的次数<blockquote>
+<p>发生以下情况时会返回 HTMLCollection 对象：<br>进行了对 getElementsByTagName() 的调用；<br>获取了元素的 childNodes 属性；<br>获取了元素的 attributes 属性；<br>访问了特殊的集合，如 document.forms、 document.images 等。</p>
+</blockquote>
+</li>
+</ul>
 
 
                 <hr>
@@ -240,14 +353,6 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2015/04/14/unix-linux-note/" data-toggle="tooltip" data-placement="top" title="Example Post With Default Header Image">&larr; Previous Post</a>
-                        </li>
-                    
-                    
-                        <li class="next">
-                            <a href="/2014/01/29/hello-2015/" data-toggle="tooltip" data-placement="top" title="Welcome to Hux Blog">Next Post &rarr;</a>
-                        </li>
                     
                 </ul>
 
@@ -283,32 +388,11 @@
                         
                           <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
-                          <a class="tag" href="/tags/#翻译" title="翻译">翻译</a>
-                        
                     </div>
                 </section>
                 
 
                 <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-
-                    
-                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
-                    
-                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
-                    
-                        <li><a href="#" target="_blank">Foo</a></li>
-                    
-                        <li><a href="#" target="_blank">Bar</a></li>
-                    
-                        <li><a href="#" target="_blank">Example Friends</a></li>
-                    
-                        <li><a href="#" target="_blank">It helps SEO</a></li>
-                    
-                </ul>
                 
             </div>
 
@@ -323,8 +407,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "hexo-theme-huxblog";
-    var disqus_identifier = "https://janlina.github.io/2014/09/22/js-version/";
-    var disqus_url = "https://janlina.github.io/2014/09/22/js-version/";
+    var disqus_identifier = "https://janlina.github.io/2018/12/01/最佳实践/";
+    var disqus_url = "https://janlina.github.io/2018/12/01/最佳实践/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -382,51 +466,15 @@
                 <ul class="list-inline text-center">
                 
                 
-                    <li>
-                        <a target="_blank" href="https://twitter.com/Demonbane_x">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
                 
+
                 
-                    <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/Demonbane">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa  fa-stack-1x fa-inverse">知</i>
-                            </span>
-                        </a>
-                    </li>
+
                 
 
                 
                     <li>
-                        <a target="_blank" href="http://weibo.com/Demonbane">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
-
-                
-                    <li>
-                        <a target="_blank" href="https://www.facebook.com/demonbane.cn">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
-
-                
-                    <li>
-                        <a target="_blank" href="https://github.com/Kaijun">
+                        <a target="_blank" href="https://github.com/JanLina">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -436,19 +484,10 @@
                 
 
                 
-                    <li>
-                        <a target="_blank" href="https://www.linkedin.com/in/kaijun-chen-42089354">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; 阿狸 2018 
+                    Copyright &copy; 木子狸 2018 
                     <br>
                     Theme by <a href="http://huangxuan.me">Hux</a> 
                     <span style="display: inline-block; margin: 0 5px;">
